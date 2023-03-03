@@ -92,7 +92,7 @@ public class DoctorAccount {
 			choice = scanner.next().charAt(0);
 		}
 		try {
-			PatientManagement.getPatientRecords(patientID).writePrescription(date, prescription);
+			PatientManagement.getPatientRecords(patientID).updatePrescription(date, prescription);
 		}
 		catch(Exception e) {
 			System.out.println("Invalid Patient ID...");

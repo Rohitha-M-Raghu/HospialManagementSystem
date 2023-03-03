@@ -48,7 +48,7 @@ public class Patient {
 		return this.patientID;
 	}
 	
-	public void writePrescription(String date, ArrayList<String> prescription) {
+	public void updatePrescription(String date, ArrayList<String> prescription) {
 		this.prescription.put(date, prescription);
 	}
 	
