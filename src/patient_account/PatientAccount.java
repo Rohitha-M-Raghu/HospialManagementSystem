@@ -94,7 +94,6 @@ public class PatientAccount {
 	}
 	
 	public void accessMedicalRecords() {
-		//medical records
 		patient.displayPrescription();
 	}
 	
