@@ -11,7 +11,13 @@ public class AppointmentHandling {
 	private static Map<String, Queue<PatientToken>> patientWaiting = new HashMap<>(); //Mapping Doctor to PatientWaitingQueue
 	
 	public static ArrayList<String> getDoctorsAvailable(String date) {
-		return doctorsAvailable.get(date);
+		try {
+			return doctorsAvailable.get(date);
+		}
+		catch(Exception e) {
+			return new ArrayList<>();
+		}
+		
 	}
 	
 	public static boolean checkDoctorAvailablilty(String date, String name) {

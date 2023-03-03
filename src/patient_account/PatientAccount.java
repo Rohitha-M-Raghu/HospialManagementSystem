@@ -26,7 +26,7 @@ public class PatientAccount {
 			System.out.println("4. Medicine from Pharmacy");
 			System.out.println("5. Logout");
 			// 5. Cancel Appointment
-			System.out.println("Enter your choice: ");
+			System.out.print("Enter your choice: ");
 			choice = scanner.nextInt();
 			
 			switch(choice) {
@@ -50,16 +50,38 @@ public class PatientAccount {
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("Enter the date: ");
 		String date = scanner.next();
-		ArrayList<String> doctorList = new ArrayList<>();
-		doctorList = AppointmentHandling.getDoctorsAvailable(date);
-		System.out.println(doctorList);
-		//Need to modify
-		return date;
+		
+		try {
+			ArrayList<String> doctorList = new ArrayList<>();
+			doctorList = AppointmentHandling.getDoctorsAvailable(date);
+			
+			System.out.println("Available Doctors");
+			System.out.println("----------------------");
+			for (int i = 0; i < doctorList.size(); i++) {
+				System.out.println(doctorList.get(i));
+			
+				}
+			return date;
+		}
+		catch(Exception e) {
+			System.out.println("No doctors Available...");
+			return null;
+		}
+		
 	}
 	
 	public void getAppointment() {
 		Scanner scanner = new Scanner(System.in);
 		String date = this.viewAvailableDoctors();
+		try {
+			if(date.isEmpty()) {
+				return;
+			}
+		}
+		catch(Exception e) {
+			System.out.println("Try Again Later...");
+			return;
+		}
 		System.out.println("Enter the doctor's name: ");
 		String doctorName = scanner.next();
 		if(AppointmentHandling.checkDoctorAvailablilty(date, doctorName)) {
@@ -73,6 +95,7 @@ public class PatientAccount {
 	
 	public void accessMedicalRecords() {
 		//medical records
+		patient.displayPrescription();
 	}
 	
 	public void getMedicine() {
@@ -80,6 +103,7 @@ public class PatientAccount {
 		System.out.print("Enter date: ");
 		String dateOfPrescription = scanner.next();
 		patient.getPriscription(dateOfPrescription);
+		//MODIFY
 		System.out.println("Medicines obtained...");
 	}
 }
