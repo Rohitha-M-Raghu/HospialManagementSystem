@@ -1,7 +1,12 @@
 package authentication;
 
 import java.util.HashMap;
+
+import patient_account.*;
 import java.util.Map;
+
+import main_system.HospitalManagement;
+import patient_account.PatientAccount;
 
 public class PatientManagement implements LoginProcessor{
 	private static Map<String, String> patientLogin = new HashMap<>(); // mapping patientID to password
@@ -25,14 +30,20 @@ public class PatientManagement implements LoginProcessor{
 		}
 		else if (patientLogin.get(id).equals(password)) { 
 			System.out.println("Patient "+ id +" logged in Succesfully...");
+			PatientAccount patientAccount = new PatientAccount(patientRecords.get(id));
+			//logging out
+			
 		}
 		else {
 			System.out.println("Wrong password...");
 		}
 	}
 	
-	public static void display() {
-		System.out.println(patientLogin);
+//	public static void display() {
+//		System.out.println(patientLogin);
+//	}
+	
+	public static Patient getPatientRecords(String id) { //return Patient Object
+		return patientRecords.get(id);
 	}
-
 }
