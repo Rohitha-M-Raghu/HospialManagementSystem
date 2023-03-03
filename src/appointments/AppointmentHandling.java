@@ -64,20 +64,13 @@ public class AppointmentHandling {
 	
 	public static PatientToken getFirstPatient(String doctorName) {
 		try {
-			return patientWaiting.get(doctorName).element();
+			PatientToken firstPatient = patientWaiting.get(doctorName).element(); 
+			patientWaiting.get(doctorName).remove();
+			return firstPatient;
 		}
 		catch(Exception e) {
 			return null;
-		}
-		
-//		if(patientWaiting.get(doctorName).isEmpty()) {
-//			System.out.println("No patients right now...");
-//			return null;
-//		}
-//		else {
-//			return patientWaiting.get(doctorName).element();
-//		}
-		
+		}		
 	}
 	
 	public static void checkOutDoctor(String doctorName) {

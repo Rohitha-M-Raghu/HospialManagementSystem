@@ -39,9 +39,6 @@ public class PatientManagement implements LoginProcessor{
 		}
 	}
 	
-//	public static void display() {
-//		System.out.println(patientLogin);
-//	}
 	
 	public static Patient getPatientRecords(String id) { //return Patient Object
 		return patientRecords.get(id);
