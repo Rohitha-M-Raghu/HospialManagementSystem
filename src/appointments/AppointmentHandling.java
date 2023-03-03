@@ -81,6 +81,11 @@ public class AppointmentHandling {
 	}
 	
 	public static void checkOutDoctor(String doctorName) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("Enter date: ");
+		String date = scanner.next();
+		doctorsAvailable.get(date).remove(doctorName);
 		patientWaiting.remove(doctorName);
+		System.out.println("Checked-out Successfully...");
 	}
 }

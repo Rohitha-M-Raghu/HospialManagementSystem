@@ -32,8 +32,7 @@ public class DoctorManagement implements LoginProcessor{
 			DoctorAccount doctorAccount = new DoctorAccount(doctorRecords.get(id));
 			//logging out...
 			
-			AppointmentHandling.checkOutDoctor(doctorAccount.getDoctor().getName());
-		}
+		}		
 		else {
 			System.out.println("Wrong password...");
 		}
