@@ -2,10 +2,13 @@ package main_system;
 import java.util.Scanner;
 
 
+
 import authentication.*;
 import authentication.AuthenticationSystem;
+import in_patient_management.BedManagement;
 
 public class HospitalManagement {
+	public static BedManagement bedManagement = new BedManagement();
 	public static void main(String[] args) {
 		HomeMenu();
 	}

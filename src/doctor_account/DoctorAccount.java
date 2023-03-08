@@ -1,11 +1,13 @@
 package doctor_account;
 import java.util.ArrayList;
+
 import java.util.Scanner;
 import authentication.PatientManagement;
 
 import authentication.Doctor;
 import authentication.Patient;
 import appointments.*;
+import main_system.HospitalManagement;
 
 public class DoctorAccount {
 	Doctor doctor;
@@ -16,7 +18,7 @@ public class DoctorAccount {
 	
 	public void doctorMenu() {
 		int choice = 0;
-		while(choice != 7) {
+		while(choice != 9) {
 			Scanner scanner = new Scanner(System.in);
 			System.out.println("\nDoctor Menu");
 			System.out.println("---------------");
@@ -25,8 +27,10 @@ public class DoctorAccount {
 			System.out.println("3. Consult Patients");
 			System.out.println("4. View Patient Records");
 			System.out.println("5. Write Prescription");
-			System.out.println("6. Check-out");
-			System.out.println("7. Logout");
+			System.out.println("6. Admit Patient");
+			System.out.println("7. Discharge Patient");
+			System.out.println("8. Check-out");
+			System.out.println("9. Logout");
 			// 7. Cancel Appointment
 			System.out.print("Enter your choice: ");
 			choice = scanner.nextInt();
@@ -42,11 +46,15 @@ public class DoctorAccount {
 				        String patientID = scanner.next();
 						viewPatientRecords(patientID);
 						break;
-				case 5: writePriscriptionForPatient();
+				case 5: this.writePriscriptionForPatient();
 						break;
-				case 6: AppointmentHandling.checkOutDoctor(doctor.getName());
+				case 6: this.admittingPatient();
 						break;
-				case 7: System.out.println("Logging Out...");
+				case 7: this.dischargingPatient();
+						break;
+				case 8: AppointmentHandling.checkOutDoctor(doctor.getName());
+						break;
+				case 9: System.out.println("Logging Out...");
 						break;
 				default: System.out.println("Wrong Choice");
 			}
@@ -103,4 +111,19 @@ public class DoctorAccount {
 	public Doctor getDoctor() {
 		return doctor;
 	}
+	
+	public void admittingPatient() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter patientID: ");
+		String patientID = scanner.next();
+		HospitalManagement.bedManagement.admitPatient(patientID);
+	}
+	
+	public void dischargingPatient() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter patientID: ");
+		String patientID = scanner.next();
+		HospitalManagement.bedManagement.admitPatient(patientID);
+	}
+	
 }
